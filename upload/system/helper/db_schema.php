@@ -7570,6 +7570,11 @@ function oc_db_schema() {
 				'auto_increment' => true
 			],
 			[
+				'name'    => 'store_id',
+				'type'    => 'int(11)',
+				'default' => '0'
+			],
+			[
 				'name' => 'route',
 				'type' => 'varchar(64)'
 			],
@@ -7588,9 +7593,23 @@ function oc_db_schema() {
 			]
 		],
 		'primary' => [
-			'translation_id'
+			'translation_id',
+			'store_id'
+		],
+		'foreign' => [
+			[
+				'key'   => 'store_id',
+				'table' => 'store',
+				'field' => 'store_id'
+			],
 		],
 		'index' => [
+			[
+				'name' => 'store',
+				'key'  => [
+					'store_id'
+				]
+			],
 			[
 				'name' => 'route',
 				'key'  => [
